@@ -14,9 +14,6 @@ ext {
     junitVersion = '5.9.2'
 }
 
-sourceCompatibility = '11'
-targetCompatibility = '11'
-
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
 }
@@ -26,6 +23,7 @@ dependencies {
     implementation "org.apache.tomcat.embed:tomcat-embed-core:10.0.20"
     implementation "org.apache.tomcat.embed:tomcat-embed-jasper:10.0.20"
     implementation 'com.fasterxml.jackson.core:jackson-databind:2.16.1'
+    implementation group: 'com.mysql', name: 'mysql-connector-j', version: '8.2.0'
 
     testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")

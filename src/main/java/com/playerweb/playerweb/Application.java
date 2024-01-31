@@ -1,5 +1,6 @@
 package com.playerweb.playerweb;
 
+import com.playerweb.playerweb.model.MySQLController;
 import org.apache.catalina.LifecycleException;
 import org.apache.catalina.WebResourceRoot;
 import org.apache.catalina.core.StandardContext;
@@ -27,6 +28,10 @@ public class Application {
         WebResourceRoot resources = new StandardRoot(ctx);
         resources.addPreResources(new DirResourceSet(resources, "/WEB-INF/classes", additionWebInfClasses.getAbsolutePath(), "/"));
         ctx.setResources(resources);
+
+        MySQLController mySQLController=new MySQLController();
+        mySQLController.createSchema();
+        mySQLController.createTable();
 
         tomcat.start();
         tomcat.getServer().await();
